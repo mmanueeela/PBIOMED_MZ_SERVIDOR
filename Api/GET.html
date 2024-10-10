@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Mediciones</title>
+</head>
+<body>
+    <h1>Mediciones</h1>
+    <div id="mediciones"></div>
+
+    <script>
+        /**
+         * @brief Petición GET para obtener todas las mediciones.
+         * @verbatim
+         * Realiza una solicitud HTTP GET a la API para obtener todas las mediciones y las muestra en un listado.
+         * Ejemplo de uso:
+         * fetch('http://localhost/Api/api.php')
+         *      .then(response => response.json())
+         *      .then(data => {
+         *          let output = '<ul>';
+         *          data.forEach(medicion => {
+         *              output += `<li>Fecha: ${medicion.fecha}, Lugar: ${medicion.lugar}, Valor: ${medicion.valor}, Tipo de gas: ${medicion.tipodegas}</li>`;
+         *          });
+         *          output += '</ul>';
+         *          document.getElementById('mediciones').innerHTML = output;
+         *      })
+         *      .catch(error => console.error('Error:', error));
+         * @endverbatim
+         */
+        fetch('http://localhost/Api/api.php')  // Ajusta la URL a la ruta correcta de tu API
+            .then(response => response.json())  // Convertimos la respuesta a JSON
+            .then(data => {
+                let output = '<ul>';
+                data.forEach(medicion => {
+                    output += `<li>Fecha: ${medicion.fecha}, Lugar: ${medicion.lugar}, Valor: ${medicion.valor}, Tipo de gas: ${medicion.tipodegas}</li>`;
+                });
+                output += '</ul>';
+                document.getElementById('mediciones').innerHTML = output;
+            })
+            .catch(error => console.error('Error:', error));
+    </script>
+</body>
+</html>
